@@ -1,0 +1,33 @@
+.thumbies {
+	padding-right: 15px;
+	float: left;
+	display: inline;
+}
+
+.captionForPic {
+	display: inline;
+}
+
+.desc {
+	padding-top: 10px;
+	display: flex;
+}
+
+.viewsAndDate {
+	display: flex;
+}
+.center-Test {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.subscrip {
+	color: green;
+	margin-left: 25px;
+	padding-top: 20px;
+}
+
+.content {
+	padding-left: 105px;
+
+}
