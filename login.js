@@ -2,24 +2,28 @@
 
 $(function (){
 
-	var $username = "jpharriman"
-	var $password = "2muchSwag"
+	var $username = "jpharriman";
+	var $password = "2muchSwag";
+	var authBasic = $.base64.btoa($username + ":" + $password);
 
 	$.ajax({
 
 		type: "POST",
 		url: "https:gpodder.net/api/2/auth/jpharriman/login.json",
+		data: {username: $username, password: $password, grant_type: 'password'},
 		dataType: 'json',
-		async: true,
-		headers: {
-			"Authorization": "Basic " + btoa($username + ":" + $password)
+		contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+		xhrFields: {
+			withCredentials: true
 		},
-		data: '{comment}',
-		success: function (){
+		headers: {
+			"Authorization": "Basic " + authBasic
+		},
+		success: function (res){
 			alert("thanks");
 		},
-		error: function (){
-			alert("no thanks 2");
+		error: function (req, status, error){
+			alert(error);
 		}
 
 
