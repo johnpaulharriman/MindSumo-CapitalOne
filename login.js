@@ -10,7 +10,7 @@ $(function (){
 		type: "GET",
 		url: "",
 		dataType: 'json',
-		async: false,
+		//async: false,
 		headers: {
 			"Authorization": "Basic " + btoa($username + ":" + $password)
 		},
