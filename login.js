@@ -5,27 +5,44 @@ $(function (){
 	var $username = "jpharriman"
 	var $password = "2muchSwag"
 
-	//$.ajax({
-		// type: 'POST',
+	$.ajax({
+		// type: 'GET',
 		// url: 'https://gpodder.net/api/2/auth/jpharriman/login.json',
 		// // beforeSend: function (xhr){
 		// // 	xhr.setRequestHeader('Authorization','Basic ')
 		// // }
 		// dataType: 'jsonp',
-		// data: {
-		// 	username: 'jpharriman',
-		// 	password: '2muchSwag'
-		// },
-		// crossDomain: true,
+		// // data: {
+		// // 	username: 'jpharriman',
+		// // 	password: '2muchSwag'
+		// // },
+		// //crossDomain: true,
 		// xhrFields: {
 		// 	withCredentials: true
+		// },
+		// beforeSend: function (xhr) {
+		// 	xhr.setRequestHeader("Authorization", 'Basic ' + btoa('jpharriman:2muchSwag'));
 		// },
 		// success : function(data) {
 		// 	alert("logged in");
 		// },
 		// error: function (xhr, ajaxOptions, throwError){
-		// 	alert("wrong");
+		// 	alert("wron");
 		// }
+		type: 'GET',
+		url: 'https://gpodder.net/api/2/auth/jpharriman/login.json',
+		data: {"test":true},
+		dataType: 'jsonp',
+		async: "false",
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function(data) {
+			console.log(data.username);
+		},
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Authorization', 'Basic ' + btoa('jpharriman:2muchSwag'));
+		}
 		// datatype: 'jsonp',
 
 		// xhrFields: {
@@ -41,18 +58,10 @@ $(function (){
 		// error: function (xhr, ajaxOptions, throwError){
 		// 	alert("wrong");
 		// }
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "https//:gpodder.net/api/2/auth/jpharriman/login.json", true);
-		xhr.withCredentials = true;
-		xhr.setRequestHeader("Authorization", 'Basic ' + btoa('jpharriman:2muchSwag'));
-		xhr.onload = function () {
-		    console.log(xhr.responseText);
-		};
-		xhr.send();
 
 
 
-	//})
+	});
 
 
 	$('#submitBtn').on("click",function(event){
