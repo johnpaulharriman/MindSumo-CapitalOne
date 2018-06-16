@@ -19,7 +19,7 @@ $(function (){
 			alert("thanks");
 		},
 		error: function (){
-			alert("no thanks 1");
+			alert("no thanks 2");
 		}
 
 
