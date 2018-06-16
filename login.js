@@ -7,8 +7,8 @@ $(function (){
 
 	$.ajax({
 
-		type: "GET",
-		url: "",
+		type: "POST",
+		url: "https:gpodder.net/api/2/auth/jpharriman/login.json",
 		dataType: 'json',
 		async: true,
 		headers: {
