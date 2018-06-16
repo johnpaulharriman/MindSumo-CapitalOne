@@ -1,5 +1,11 @@
 $(function (){
 	var $link = "https://gpodder.net";
+	var $username = localStorage.getItem('usrnm');
+	var $password = localStorage.getItem('pswrd');
+	if ($username !== undefined && $password !== undefined){
+		// alert($username);
+		// alert($password);
+	}
 
 	var $topResults = $('#topResults');
 	$.ajax({
