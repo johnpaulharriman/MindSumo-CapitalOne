@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link href="searchres.css" rel="stylesheet">
+
+    <title>Search</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" style="color: white" href="index.html">Cap 1</a>
+      </form>
+    </nav>
+
+    <!-- div class="d-flex justify-content-center /align-items-center container topSearch"> -->
+      <div class="d-flex justify-content-center align-items-center topSearch">
+        <input id="searchT" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="sortBy">
+            <option selected>Sort by...</option>
+            <option value="1">Popularity</option>
+            <option value="2">Genre</option>
+            <option value="3">Relevance</option>
+          </select>
+        </div>
+
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="numOps">
+            <option selected>Number of Results...</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+          </select>
+        </div>
+
+        <a id="searchBtn">
+            <button class="btn btn-outline-secondary my-2 my-sm-0">Search</button>
+        </a>
+      </div>
+
+    <!-- </div> -->
+
+
+    <div id="searchReses" class="list-group"></div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+    <script src="searchres.js"></script>
+  </body>
+</html>

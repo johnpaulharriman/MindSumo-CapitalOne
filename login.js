@@ -38,7 +38,7 @@ $(function (){
 			withCredentials: true
 		},
 		success: function(data) {
-			console.log(data.username);
+			alert("WORKS");
 		},
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader('Authorization', 'Basic ' + btoa('jpharriman:2muchSwag'));
