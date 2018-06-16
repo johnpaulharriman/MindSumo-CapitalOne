@@ -1,4 +1,4 @@
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const proxyurl = "https://capitalone-proxy-jph.herokuapp.com/";
 var $url1 = "https://gpodder.net/api/2/auth/" + document.getElementById("inputUsername").value + "/login.json"; // site that doesn’t send Access-Control-*
 var $url = proxyurl+$url1;
 
