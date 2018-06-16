@@ -10,7 +10,7 @@
 
     <link href="mainpage.css" rel="stylesheet">
 
-    <title>Hello, world!</title>
+    <title>Main Page</title>
   </head>
   <body>
   	
@@ -119,7 +119,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js">
+    </script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC3iQXuUj76kUUmTTBuMJE2lOYfhERhE7A",
+        authDomain: "capital1jph.firebaseapp.com",
+        databaseURL: "https://capital1jph.firebaseio.com",
+        projectId: "capital1jph",
+        storageBucket: "",
+        messagingSenderId: "448062197697"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="main.js"></script>
   </body>
 </html>
