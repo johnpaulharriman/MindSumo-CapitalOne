@@ -69,10 +69,10 @@ $(function (){
 			return subInfo;
 
 		}).then(function(subs){
-			console.log(subs);
+			//console.log(subs);
 			for (var j=0; j < 5; j++){
 				var sub = subs[j];
-				console.log(j);
+				//console.log(j);
 				//alert(sub);
 				var l1 = '<div class="subscrip container center">';
 				var l1p5 = '<a href='+sub.mygpo_link+'>'
@@ -89,7 +89,46 @@ $(function (){
 			}
 			return subs;
 		}).then(function(subs){
+			//console.log(subs);
+			
+			localStorage.setItem('basicSub',JSON.stringify(subs));
+			
+			var length = subs.length;
+			alert(length);
+			var subDetailedInfo = new Array(1);
+			var reff = firebase.database().ref('cached-entries/');
+			reff.on('value', function(snapshot){
+				if (snapshot.val() !== null){
+					subDetailedInfo[0] = snapshot.val();
+					localStorage.setItem('detailedSub', JSON.stringify(subDetailedInfo[0]));
+				}
+			});
+
+
+			
+
+
+			//checkFirebase();
 			//console.log($subscriptionList === undefined);
+		}).then(function(subsobj){
+			// //var subBasic = subsobj[0];
+			var subAdvanced = JSON.parse(localStorage.getItem('detailedSub'));
+			var subBasic = JSON.parse(localStorage.getItem('basicSub'));
+			console.log(subAdvanced);
+			console.log(subBasic);
+			var length = subBasic.length;
+			for (var i = 0; i < length; i++){
+				var url = subBasic[i].url;
+				var urlfixed = url.replace(/[^a-zA-Z ]/g, "");
+				if (subAdvanced[urlfixed]) {
+					console.log(i);
+				}
+				else  {
+					prepareForFirebase(url);
+				}
+			}
+			alert("all ready to go!");
+
 		});
 
 			
@@ -98,22 +137,7 @@ $(function (){
 			
 
 
-		// $.ajax({
-		// 	type: "GET",
-		// 	url: proxyurl+"http://feeds.gpodder.net/parse",
-		// 	data: {url:"http://leo.am/podcasts/floss"},
-		// 	//dataType: 'json',
-		// 	headers: {Accept: 'application/json'},
-		// 	contentType: 'application/x-www-form-urlencoded',
-
-		// 	success: function(data, textStatus, request) {
-		// 		console.log(data);
-		// 		saveToFirebase(data);
-		// 	},
-		// 	error: function(e) {
-		// 		console.log(e);
-		// 	}
-		// });
+		
 		
 	
 }
@@ -155,6 +179,22 @@ function retrieveSubs(username,deviceid) {
 
 
 
+function checkFirebase(url) {
+	
+	var urlfixed = url.replace(/[^a-zA-Z ]/g, "");
+	var ref = firebase.database().ref('cached-entries/'+urlfixed);
+	//console.log(urlfixed);
+	var $fixedVal = null;
+	ref.once('value').then(function(snapshot){
+		$fixedVal = snapshot.val();
+		if (snapshot.val() !== null){
+			alert("TURE");
+			return true;
+		}
+		
+	});
+	return false;
+}
 
 
 
@@ -171,17 +211,29 @@ function saveToFirebase(websiteInfo) {
 	console.log(url);
 	ref.set(websiteObject)
 		.then(function(snapshot){
-			alert("working!");
+			//alert("working!");
 		}, function(error) {
 			alert("not working");
 		});
+}
 
-	ref.once('value').then(function(snapshot){
-		console.log(snapshot.val());
-		alert("works");
+function prepareForFirebase(link) {
+	$.ajax({
+		type: "GET",
+		url: proxyurl+"http://feeds.gpodder.net/parse",
+		data: {url:link},
+		//dataType: 'json',
+		headers: {Accept: 'application/json'},
+		contentType: 'application/x-www-form-urlencoded',
+
+		success: function(data, textStatus, request) {
+			console.log(data);
+			saveToFirebase(data);
+		},
+		error: function(e) {
+			console.log(e);
+		}
 	});
-
-
 }
 
 
