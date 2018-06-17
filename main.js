@@ -1,10 +1,12 @@
 // must use this proxy url in order to get around the CORS protocol
 const proxyurl = "https://capitalone-proxy-jph.herokuapp.com/";
 var $topRes = document.getElementById("topresults");
+var $detailedSUBS = [];
 
 $(function (){
 	var $link = "https://gpodder.net";
-	var $flag = false;
+	var $flag = false; 
+
 
 	//Gather username and password from login page
 	var $username = localStorage.getItem('usrnm');
@@ -24,7 +26,7 @@ $(function (){
 		
 	});
 
-
+	
 
 	if (loggedInUnd&&loggedInNull){
 		$.ajax({
@@ -98,48 +100,72 @@ $(function (){
 			var subDetailedInfo = new Array(1);
 			var reff = firebase.database().ref('cached-entries/');
 			reff.on('value', function(snapshot){
+				//console.log(snapshot.val());
 				if (snapshot.val() !== null){
 					subDetailedInfo[0] = snapshot.val();
+					//$onem.push(subDetailedInfo[0]);
 					localStorage.setItem('detailedSub', JSON.stringify(subDetailedInfo[0]));
 				}
 			});
 
-
-			
-
-
 			//checkFirebase();
 			//console.log($subscriptionList === undefined);
-		}).then(function(subsobj){
+		}).then(function(){
 			// //var subBasic = subsobj[0];
+			//console.log($onem);
 			var subAdvanced = JSON.parse(localStorage.getItem('detailedSub'));
 			var subBasic = JSON.parse(localStorage.getItem('basicSub'));
-			console.log(subAdvanced);
-			console.log(subBasic);
+			//console.log(subAdvanced);
+			//console.log(subBasic);
 			var length = subBasic.length;
 			for (var i = 0; i < length; i++){
 				var url = subBasic[i].url;
 				var urlfixed = url.replace(/[^a-zA-Z ]/g, "");
-				if (subAdvanced[urlfixed]) {
-					console.log(i);
+				//alert(subAdvanced["httpleoampodcastssn"])
+				if (subAdvanced === null) {
+					prepareForFirebase(url);
 				}
-				else  {
+				else if (!subAdvanced[urlfixed]) {
+					//console.log("jmm");
 					prepareForFirebase(url);
 				}
 			}
-			alert("all ready to go!");
 
+			var highFreq = [];
+			for (i = 0; i < length; i++) {
+				var url = subBasic[i].url;
+				var urlfixed = url.replace(/[^a-zA-Z ]/g, "");
+				highFreq.push(subAdvanced[urlfixed]);
+				//console.log(highFreq);
+			}
+
+			console.log(highFreq);
+
+			//highFreq = JSON.parse(JSON.stringify(highFreq));
+
+			highFreq = highFreq.sort(function(a,b){
+						//alert(a["weightedFreq"]);
+						var keyA = a.weightedFreq;
+						var keyB = b.weightedFreq;
+						return(keyB-keyA);
+					});
+			return highFreq;
+
+
+		}).done(function(param) {
+			console.log(param);
+			//console.log(param[0].logo);
+			var heee = param["0"];
+			var hopelo = heee["logo"];
+			console.log(heee);
+			console.log(hopelo);
+			document.getElementById('firstSlide').src = param["0"]["logo"];
 		});
 
-			
-			// console.log(subInfo);
-
-			
 
 
-		
-		
-	
+
+
 }
 	else 
 	{
@@ -150,7 +176,17 @@ $(function (){
 
 
 
+function refData(param) {
+	console.log(param);
 
+	$detailedSUBS.push(param);
+	console.log($detailedSUBS);
+	runAnalysis();
+}
+
+function checkthis() {
+	alert($detailedSUBS);
+}
 
 
 
@@ -179,29 +215,10 @@ function retrieveSubs(username,deviceid) {
 
 
 
-function checkFirebase(url) {
-	
-	var urlfixed = url.replace(/[^a-zA-Z ]/g, "");
-	var ref = firebase.database().ref('cached-entries/'+urlfixed);
-	//console.log(urlfixed);
-	var $fixedVal = null;
-	ref.once('value').then(function(snapshot){
-		$fixedVal = snapshot.val();
-		if (snapshot.val() !== null){
-			alert("TURE");
-			return true;
-		}
-		
-	});
-	return false;
-}
 
 
-
-
-function saveToFirebase(websiteInfo) {
-	var websiteObj = websiteInfo[0];
-	var url = websiteObj.urls[0];
+function saveToFirebase(websiteObj) {
+	var url = websiteObj.url;
 	var urlfixed = url.replace(/[^a-zA-Z ]/g, "");
 	var ref = firebase.database().ref('cached-entries/'+urlfixed);
 	var websiteObject = JSON.stringify({
@@ -213,11 +230,12 @@ function saveToFirebase(websiteInfo) {
 		.then(function(snapshot){
 			//alert("working!");
 		}, function(error) {
-			alert("not working");
+			console.log("not working - sorry :(");
 		});
 }
 
 function prepareForFirebase(link) {
+	//console.log(link);
 	$.ajax({
 		type: "GET",
 		url: proxyurl+"http://feeds.gpodder.net/parse",
@@ -227,17 +245,72 @@ function prepareForFirebase(link) {
 		contentType: 'application/x-www-form-urlencoded',
 
 		success: function(data, textStatus, request) {
-			console.log(data);
-			saveToFirebase(data);
+			return JSON.parse(JSON.stringify(data));
+			
 		},
 		error: function(e) {
-			console.log(e);
+			//console.log(e);
 		}
+	}).done(function(param) {
+		//need author, description, link, logo, url, episode data
+
+		var $parsed = (param["0"]);
+		var episodes = $parsed.episodes;
+		var episodelength = episodes.length;
+		var frequencyGeneral = allTimeFreq(episodes);
+		var frequencyLastMonth = monthTimeFreq(episodes);
+		var weightedFreq = (7*frequencyLastMonth)+(3*frequencyGeneral);
+		var author = $parsed.author;
+		var description = $parsed.description;
+		var url = link;
+		var logo = $parsed.logo;
+
+		var data = {
+			url: url,
+			author: author,
+			description: description,
+			episodeLength: episodelength,
+			weightedFreq: weightedFreq,
+			logo: logo
+		}
+
+		saveToFirebase(data);
+
 	});
 }
 
 
+function allTimeFreq(episodeData) {
+	var length = episodeData.length;
+	var minutes = 1000 * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var years = days * 365;
+	var range = (episodeData[0]["released"]-episodeData[length-1]["released"]);
+	var yearForRange = (range/years);
+	return Math.round((length/yearForRange)/10000);
+
+}
+
+function monthTimeFreq(episodeData) {
+	var length = episodeData.length;
+	var today = Date.parse(Date());
+	
+	var minutes = 1000 * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var oneMonthAgo = today-(30*days);
 
 
+	var log = 0;
+
+	for (var i = 0; i <length; i++){
+		if (episodeData[i]["released"]*1000 > oneMonthAgo){
+			log++;
+		}
+	}
+	return log;
+	
+}
 
 

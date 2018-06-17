@@ -34,7 +34,7 @@ $(function (){
 		//$searchReses = '<div id="searchReses" class="list-group"></div>'
 		var numGate = $numOfRes;
 		var $link = $linkForRevAndPop + $searchTerm;
-		alert($sortByTerm);
+		//alert($sortByTerm);
 		if (isNaN(numGate)){
 			numGate = 5;
 			document.getElementById("numOps").value = "5";
@@ -44,7 +44,7 @@ $(function (){
 			$link = $linkForGenre+ $searchTerm + '/' + stringVal + '.json'; 
 		}
 
-		alert($link);
+		//alert($link);
 
 
 		$.ajax({
