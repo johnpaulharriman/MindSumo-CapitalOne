@@ -1,0 +1,12 @@
+@media (min-width: 0px) and (max-width: 1200px) {
+	body {background: yellow;}
+	.testin {
+		color:green;
+	}
+}
+
+
+@media (max-width: 767px) {
+
+}
+
