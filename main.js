@@ -72,7 +72,7 @@ $(function (){
 			console.log(subs);
 			for (var j=0; j < 5; j++){
 				var sub = subs[j];
-				console.log(sub);
+				console.log(j);
 				//alert(sub);
 				var l1 = '<div class="subscrip container center">';
 				var l1p5 = '<a href='+sub.mygpo_link+'>'
@@ -85,8 +85,9 @@ $(function (){
 	            var l7 = '</div>';
 		        var l8 = '</div>';
 		        $topRes.innerHTML = $topRes.innerHTML + (l1+l1p5+l2+l2p5+l3+l4+l5+l6+l7+l8);
-		    return subs;
+		    
 			}
+			return subs;
 		}).then(function(subs){
 			//console.log($subscriptionList === undefined);
 		});
