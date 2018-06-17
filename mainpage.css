@@ -31,7 +31,6 @@
 }
 
 .subscrip {
-	color: green;
 	margin-left: 25px;
 	padding-top: 20px;
 }
@@ -82,6 +81,7 @@
 
 
 @media (max-width: 767px) {
+
 	.subscrip {
 	padding-top: 20px;
 	}
@@ -112,6 +112,10 @@
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	.desc {
+		font-size: .8em;
 	}
 	
 }

@@ -10,8 +10,23 @@ $(function (){
 	var $username = localStorage.getItem('usrnm');
 	var $password = localStorage.getItem('pswrd');
 	var $deviceid = localStorage.getItem('dvid');
+	var $subscriptionList;
+	var loggedInUnd = ($username !== undefined && $password !== undefined);
+	var loggedInNull = ($username !== null && $password !== null);
+	var d = Date();
+	console.log(Date.parse(d));
 
-	if ($username !== undefined && $password !== undefined){
+	//console.log($username);
+
+	$("#logoutBtn").on('click',function(event){
+		localStorage.clear();
+		window.location.href = "index.html";
+		
+	});
+
+
+
+	if (loggedInUnd&&loggedInNull){
 		$.ajax({
 				type: "GET",
 				url: proxyurl+"https://gpodder.net/subscriptions/"+$username+"/"+$deviceid+".json",
@@ -40,11 +55,8 @@ $(function (){
 					dataType: 'json',
 					format: 'json',
 					success: function(data, textStatus, request) {
-						// console.log(data);
-						// console.log(resp);
+						
 						subInfo.push(data);
-						//console.log(subInfo.length);
-						//console.log(subInfo[0]);
 					}
 				});
 			}
@@ -57,6 +69,7 @@ $(function (){
 			return subInfo;
 
 		}).then(function(subs){
+			console.log(subs);
 			for (var j=0; j < 5; j++){
 				var sub = subs[j];
 				console.log(sub);
@@ -72,8 +85,10 @@ $(function (){
 	            var l7 = '</div>';
 		        var l8 = '</div>';
 		        $topRes.innerHTML = $topRes.innerHTML + (l1+l1p5+l2+l2p5+l3+l4+l5+l6+l7+l8);
-
+		    return subs;
 			}
+		}).then(function(subs){
+			//console.log($subscriptionList === undefined);
 		});
 
 			
@@ -104,7 +119,7 @@ $(function (){
 	else 
 	{
 		alert("Please log in!");
-		window.location.href = "main.html";
+		window.location.href = "index.html";
 	}
 });
 
