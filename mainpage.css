@@ -2,6 +2,10 @@
 
 
 
+.onload-on {
+
+}
+
 
 .thumbies {
 	padding-right: 15px;
@@ -46,6 +50,10 @@
 	padding: 20px;
 }
 
+.carousel-inner {
+	padding-bottom: 10px;
+}
+
 .carousel-control-next-icon {
   height: 100px;
   width: 100px;
@@ -65,14 +73,26 @@
   /*border: 1px solid black;*/
   background-image: none;
 }
+
+
+.carousel-caption {
+	position: relative;
+	padding-top: 20px;
+	color: black;
+	left: auto;
+	right: auto;
+}
+
 .carousel-control-next-icon:after
 {
+  position: absolute;
   content: '>';
   font-size: 55px;
   color: #345c9e;
 }
 
 .carousel-control-prev-icon:after {
+  position: absolute;
   content: '<';
   font-size: 55px;
   color: #345c9e;
@@ -118,4 +138,19 @@
 		font-size: .8em;
 	}
 	
+}
+
+.onload-off {
+	display: none;
+}
+
+#message {
+	font-size: .5em
+	padding: 5px;
+
+}
+#message2 {
+	font-size: .4em
+	padding: 5px;
+
 }

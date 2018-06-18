@@ -63,6 +63,7 @@ $(function (){
 				}
 				for (var i=0; i < numGate; i++){
 					var res = searchReses[i];
+					console.log(res);
 
 					var l1 = '<a href='+ res.mygpo_link + ' class="list-group-item list-group-item-action flex-column align-items-start">';
 					var l2 = '<div class="d-flex w-100 justify-content-between">';
