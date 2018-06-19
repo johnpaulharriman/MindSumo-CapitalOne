@@ -103,10 +103,10 @@ function run(){
 	var data = (localStorage.getItem('useInfo'));
 	var rec = recommend($username,JSON.parse(data));
 	if ($.isEmptyObject(rec)){
-		popular('Society & Culture',10);
+		popular(10,'Society & Culture');
 	}
 	else{
-		popular('Arts',10);
+		popular(10,'Arts');
 	}
 	
 }
