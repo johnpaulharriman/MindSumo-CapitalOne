@@ -174,9 +174,10 @@ function popular(count,tag){
 					
 					{
 						if (!($onlyLink[sub.url])){
+							var logourl = (sub.logo_url.replace("p://","ps://"));
 							var l1 = '<div class="subscrip container-fluid center">';
 							var l1p5 = '<a href='+sub.url+'>'
-				            var l2 = '<img src=' + sub.logo_url + ' class="thumbies rounded img-fluid center carPic" alt="Responsive image">';
+				            var l2 = '<img src=' + logourl + ' class="thumbies rounded img-fluid center carPic" alt="Responsive image">';
 				            var l2p5 = '</a>'
 				            var l3 = '<div class="content">';
 				            var l4 = '<h5 class="text-center">' + sub.title + '</h5>';
