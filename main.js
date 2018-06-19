@@ -3,6 +3,7 @@ const proxyurl = "https://capitalone-proxy-jph.herokuapp.com/";
 var $topRes = document.getElementById("topResults");
 var $detailedSUBS = [];
 var $progData = 0;
+var $username = localStorage.getItem('usrnm');
 
 $(function (){
 	var $link = "https://gpodder.net";
@@ -27,6 +28,15 @@ $(function (){
 		localStorage.clear();
 		window.location.href = "index.html";
 		
+	});
+
+	$('#recBtn').on('click',function(event)
+	{
+		changeToRec();
+
+
+		
+
 	});
 
 	
@@ -420,3 +430,7 @@ function updateProg() {
 	$("#prog").css("width", ($progData).toString()+"%");
 }
 
+
+function changeToRec(){
+	window.location.href = "recommend.html"
+}
