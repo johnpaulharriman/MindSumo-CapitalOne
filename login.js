@@ -55,7 +55,7 @@ $(function (){
 							var keyB = b.subscriptions;
 							return(keyB-keyA);
 						});
-					console.log(data[0]["id"]);
+					//console.log(data[0]["id"]);
 					localStorage.setItem('dvid', data[0]["id"]);
 					window.location.href = "main.html"
 				},

@@ -48,6 +48,7 @@ $(function (){
 					//updateProg();
 					return data;
 				}
+				
 			// });
 		}).then(function(resp){
 
@@ -346,6 +347,7 @@ function prepareForFirebase(link,upd) {
 			var episodeTitle = episodes["0"]["title"];
 			var episodeRelease = new Date(episodes["0"]["released"] * 1000);
 			var title = $parsed.title;
+			var tags = $parsed.tags;
 			//console.log($parsed);
 
 			var data = {
@@ -356,6 +358,7 @@ function prepareForFirebase(link,upd) {
 				weightedFreq: weightedFreq,
 				logo: logo,
 				title: title,
+				tags: tags,
 				episodeTitle: episodeTitle,
 				episodeRelease: episodeRelease
 			}

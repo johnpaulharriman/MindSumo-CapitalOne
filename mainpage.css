@@ -39,13 +39,6 @@
 	padding-top: 20px;
 }
 
-
-
-.content {
-	/*padding-left: 105px;*/
-
-}
-
 .heading1 {
 	padding: 20px;
 }
@@ -98,8 +91,10 @@
   color: #345c9e;
 }
 
+.content {
+	padding-top: 40px;
 
-
+}
 @media (max-width: 767px) {
 
 	.subscrip {
@@ -134,6 +129,11 @@
 		margin-right: auto;
 	}
 
+	.content {
+		padding-top: 10px;
+
+	}
+
 	.desc {
 		font-size: .8em;
 	}
@@ -146,11 +146,10 @@
 
 #message {
 	font-size: .5em
-	padding: 5px;
+	padding-top: 20px;
 
 }
 #message2 {
-	font-size: .4em
-	padding: 5px;
+	font-size: .5em
 
 }
