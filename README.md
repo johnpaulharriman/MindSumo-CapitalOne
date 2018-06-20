@@ -2,7 +2,6 @@
 For Capital One MindSumo Challenge
 
 submission email: johnwpaulharriman@gmail.com
-accidental submission email: jharrima@andrew.cmu.edu
 
 For Capital One MindSumo Challenge
 Website Setup:
