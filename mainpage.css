@@ -1,0 +1,194 @@
+
+
+html, body {
+    max-width: 100%;
+    /*overflow-x: hidden;*/
+}
+
+.onload-on {
+
+}
+
+
+/*.thumbies {
+	padding-right: 15px;
+	float: left;
+	display: inline-block;
+	max-width: 30%;
+}*/
+
+.thumbies {
+	float: left;
+	padding-bottom: 30px;
+	padding-right: 20px;
+	display: block;
+	min-width: 40%;
+	max-width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+.captionForPic {
+	display: inline-block;
+}
+
+.desc {
+	padding-top: 10px;
+	display: flex;
+}
+
+.slideImg {
+	min-width: 35%;
+	max-width: 35%;
+}
+
+.viewsAndDate {
+		text-align: justify;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+}
+.center-Test {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.subscrip {
+	margin-left: 25px;
+	padding-top: 20px;
+}
+
+.heading1 {
+	padding: 20px;
+}
+
+.carousel-inner {
+	padding-bottom: 10px;
+}
+
+.carousel-control-next-icon {
+  height: 100%;
+  width: 150%;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius:25%;
+  /*border: 1px solid black;*/
+  background-image: none;
+  display:inline-block;
+}
+
+.carousel-control-prev-icon {
+  height: 100%;
+  width: 150%;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 25%;
+  /*border: 1px solid black;*/
+  background-image: none;
+  display:inline-block;
+}
+
+
+.carousel-caption {
+	position: relative;
+	padding-top: 20px;
+	color: black;
+	left: auto;
+	right: auto;
+}
+
+.carousel-control-next-icon:after
+{
+  position: absolute;
+  content: '>';
+  font-size: 3em;
+  color: #345c9e;
+  left:0;
+  right:0;
+  margin:0;
+}
+
+.carousel-control-prev-icon:after {
+  position: absolute;
+  content: '<';
+  font-size: 3em;
+  color: #345c9e;
+  left:0;
+  right:0;
+  margin:0;
+}
+
+.content {
+	/*padding-top: 40px;*/
+
+}
+@media (max-width: 767px) {
+
+	.subscrip {
+	padding-top: 20px;
+	margin-left: auto;
+		margin-right: auto;
+	}
+
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		
+	}
+
+
+	.thumbies {
+	float: none;
+	padding-bottom: 30px;
+	display: block;
+	min-width: 30%;
+	max-width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	/*.content {
+	padding-left: 0px;
+	}*/
+
+
+
+	.viewsAndDate {
+		text-align: justify;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.content {
+		/*padding-top: 10px;*/
+
+	}
+
+	.desc {
+		font-size: .8em;
+	}
+	.slideImg {
+		max-width: 50%;
+	}
+}
+
+.onload-off {
+	display: none;
+}
+
+#message {
+	font-size: .5em
+	padding-top: 20px;
+
+}
+#message2 {
+	font-size: .5em
+
+}
+
+.container-fluid {
+	max-width:95%;
+}
+
+
