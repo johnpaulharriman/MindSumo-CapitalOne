@@ -1,6 +1,7 @@
 // must use this proxy url in order to get around the CORS protocol
 const proxyurl = "https://capitalone-proxy-jph.herokuapp.com/";
 var $topRes = document.getElementById("topResults");
+var $othRes = document.getElementById("otherResults");
 var $detailedSUBS = [];
 var $progData = 0;
 var $username = localStorage.getItem('usrnm');
@@ -90,26 +91,34 @@ $(function (){
 
 		}).then(function(subs){
 			//console.log(subs);
+			var remSubs = (subs.slice(5))
+			var remSubLength = remSubs.length;
 			for (var j=0; j < 5; j++){
 				var sub = subs[j];
 				if(sub !== undefined)
 				{
-					var l1 = '<div class="subscrip container-fluid center">';
-					var l1p5 = '<a href='+sub.url+'>'
-		            var l2 = '<img src=' + sub.logo_url + ' class="thumbies rounded img-fluid center carPic" alt="Responsive image">';
-		            var l2p5 = '</a>'
-		            var l3 = '<div class="card content">';
-		            var l4 = '<div class="card-header text-center">' + sub.title + '</div>';
-		            var l4p5 = '<div class="card-body">'
-		            var l5 = '<p class="desc text-center">' + sub.description + '</p>';
-		            var l6 = '<p style="padding-bottom:10px" class="text-center viewsAndDate"> Subscribers last week: ' + sub.subscribers_last_week + '</p>';
-					            
-			        var l8 = '</div></div></div>';
-			        $topRes.innerHTML = $topRes.innerHTML + (l1+l1p5+l2+l2p5+l3+l4+l4p5+l5+l6+l8);
+					addHTML(sub,$topRes);
 		    	}
+		    	
+			}
+
+			var listOfSubs = [];
+			while(listOfSubs.length < 8){
+			    var randomnumber = Math.floor(Math.random()*remSubLength);
+			    if(listOfSubs.indexOf(randomnumber) > -1) continue;
+			    listOfSubs[listOfSubs.length] = randomnumber;
 			}
 			//$progData += 10;
 			//updateProg();
+			for (var i=0; i < 5; i++){
+
+				var sub = remSubs[listOfSubs[i]];
+				console.log(sub);
+				if(sub !== undefined)
+				{
+					addHTML(sub,$othRes);
+		    	}
+			}
 			return subs;
 		}).then(function(subs){
 			//console.log(subs);
@@ -435,4 +444,25 @@ function updateProg() {
 
 function changeToRec(){
 	window.location.href = "recommend.html"
+}
+
+function addHTML(sub,extension) {
+
+	var logourl = sub.logo_url
+	if (logourl.includes("gif")) {
+		logourl = "Images/Podcast-placeholder.jpg";
+	}
+	var l1 = '<div class="subscrip container-fluid center">';
+	var l1p5 = '<a href='+sub.url+'>'
+    var l2 = '<img src=' + logourl + ' class="thumbies rounded img-fluid center carPic" alt="Responsive image">';
+    var l2p5 = '</a>'
+    var l3 = '<div class="card content">';
+    var l4 = '<div class="card-header text-center">' + sub.title + '</div>';
+    var l4p5 = '<div class="card-body">'
+    var l5 = '<p class="desc text-center">' + sub.description + '</p>';
+    var l6 = '<p style="padding-bottom:10px" class="text-center viewsAndDate"> Subscribers last week: ' + sub.subscribers_last_week + '</p>';
+	            
+    var l8 = '</div></div></div>';
+    extension.innerHTML = extension.innerHTML + (l1+l1p5+l2+l2p5+l3+l4+l4p5+l5+l6+l8);
+	
 }

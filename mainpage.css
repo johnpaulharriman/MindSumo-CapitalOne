@@ -26,6 +26,10 @@ html, body {
 	display: flex;
 }
 
+.slideImg {
+	max-width: 40%;
+}
+
 .viewsAndDate {
 		text-align: justify;
 		display: block;
@@ -127,9 +131,9 @@ html, body {
 	padding-bottom: 30px;
 	display: block;
 	min-width: 30%;
-	max-width: 40%;
+	max-width: 50%;
 	margin-left: auto;
-		margin-right: auto;
+	margin-right: auto;
 	}
 	/*.content {
 	padding-left: 0px;
