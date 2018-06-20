@@ -1,6 +1,9 @@
 
 
-
+html, body {
+    max-width: 100%;
+    /*overflow-x: hidden;*/
+}
 
 .onload-on {
 
@@ -10,12 +13,12 @@
 .thumbies {
 	padding-right: 15px;
 	float: left;
-	display: inline;
+	display: inline-block;
 	max-width: 30%;
 }
 
 .captionForPic {
-	display: inline;
+	display: inline-block;
 }
 
 .desc {
@@ -48,23 +51,25 @@
 }
 
 .carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 150%;
   outline: black;
   background-size: 100%, 100%;
-  border-radius: 50%;
+  border-radius:25%;
   /*border: 1px solid black;*/
   background-image: none;
+  display:inline-block;
 }
 
 .carousel-control-prev-icon {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 150%;
   outline: black;
   background-size: 100%, 100%;
-  border-radius: 50%;
+  border-radius: 25%;
   /*border: 1px solid black;*/
   background-image: none;
+  display:inline-block;
 }
 
 
@@ -80,25 +85,33 @@
 {
   position: absolute;
   content: '>';
-  font-size: 55px;
+  font-size: 3em;
   color: #345c9e;
+  left:0;
+  right:0;
+  margin:0;
 }
 
 .carousel-control-prev-icon:after {
   position: absolute;
   content: '<';
-  font-size: 55px;
+  font-size: 3em;
   color: #345c9e;
+  left:0;
+  right:0;
+  margin:0;
 }
 
 .content {
-	padding-top: 40px;
+	/*padding-top: 40px;*/
 
 }
 @media (max-width: 767px) {
 
 	.subscrip {
 	padding-top: 20px;
+	margin-left: auto;
+		margin-right: auto;
 	}
 
 	.center {
@@ -114,7 +127,9 @@
 	padding-bottom: 30px;
 	display: block;
 	min-width: 30%;
-	max-width: 60%;
+	max-width: 40%;
+	margin-left: auto;
+		margin-right: auto;
 	}
 	/*.content {
 	padding-left: 0px;
@@ -130,7 +145,7 @@
 	}
 
 	.content {
-		padding-top: 10px;
+		/*padding-top: 10px;*/
 
 	}
 
@@ -153,3 +168,9 @@
 	font-size: .5em
 
 }
+
+.container-fluid {
+	max-width:95%;
+}
+
+

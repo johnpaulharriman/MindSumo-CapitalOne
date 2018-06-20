@@ -32,8 +32,8 @@ $(function (){
 
 	$('#recBtn').on('click',function(event)
 	{
-		changeToRec();
-
+		//saveToFirebase(getUserInfo(changeToRec));
+		window.location.href = "recommend.html"
 
 		
 
@@ -98,13 +98,14 @@ $(function (){
 					var l1p5 = '<a href='+sub.url+'>'
 		            var l2 = '<img src=' + sub.logo_url + ' class="thumbies rounded img-fluid center carPic" alt="Responsive image">';
 		            var l2p5 = '</a>'
-		            var l3 = '<div class="content">';
-		            var l4 = '<h5 class="text-center">' + sub.title + '</h5>';
-		            var l5 = '<p class="desc">' + sub.description + '</p>';
+		            var l3 = '<div class="card content">';
+		            var l4 = '<div class="card-header text-center">' + sub.title + '</div>';
+		            var l4p5 = '<div class="card-body">'
+		            var l5 = '<p class="desc text-center">' + sub.description + '</p>';
 		            var l6 = '<p style="padding-bottom:10px" class="text-center viewsAndDate"> Subscribers last week: ' + sub.subscribers_last_week + '</p>';
-		            var l7 = '</div>';
-			        var l8 = '</div>';
-			        $topRes.innerHTML = $topRes.innerHTML + (l1+l1p5+l2+l2p5+l3+l4+l5+l6+l7+l8);
+					            
+			        var l8 = '</div></div></div>';
+			        $topRes.innerHTML = $topRes.innerHTML + (l1+l1p5+l2+l2p5+l3+l4+l4p5+l5+l6+l8);
 		    	}
 			}
 			//$progData += 10;
@@ -429,6 +430,7 @@ function monthTimeFreq(episodeData) {
 function updateProg() {
 	$("#prog").css("width", ($progData).toString()+"%");
 }
+
 
 
 function changeToRec(){
