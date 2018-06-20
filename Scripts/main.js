@@ -91,6 +91,7 @@ function retrieveSubs(username,deviceid) {
 	        req.setRequestHeader('Authorization', 'Basic ' + btoa($username+":"+$password));
 	    },
 	    success: function(data, textStatus, request) {
+	    	console.log("here");
 			return data;
 		}
 	})

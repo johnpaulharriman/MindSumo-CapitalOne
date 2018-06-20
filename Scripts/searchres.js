@@ -27,10 +27,12 @@ $(function (){
 		}
 	});
 
-	// This function takes all input from the user and retrieves
-	// the data based on the gpodder api using the number of 
-	// results, the search term from the user input, and how
-	// it should be sorted.
+	/* 
+	   This function takes all input from the user and retrieves
+	   the data based on the gpodder api using the number of 
+	   results, the search term from the user input, and how
+	   it should be sorted.
+	*/
 
 	
 	function getAjax($numOfRes,$searchTerm,$sortByTerm){
@@ -74,24 +76,21 @@ $(function (){
 
 				for (var i=0; i < numGate; i++){
 					var res = searchReses[i];
-
-					var l1 = '<a href='+ res.mygpo_link + ' class="list-group-item list-group-item-action flex-column align-items-start">';
-					var l2 = '<div class="d-flex w-100 justify-content-between">';
-					var l3 = '<h5 class="mb-1">' + res.title + '</h5>';
-					var l4 = '</div>';
-					var l5 = '<p class="mb-1">' + res.description + '</p>';
-					var l6 = '<small class="text-muted"> Subscribers: ' + res.subscribers  + '</small>';
-					var l7 = '</a>';
-					$searchRese.append(l1+l2+l3+l4+l5+l6+l7);
+					if (res !== undefined)
+					{
+						var l1 = '<a href='+ res.mygpo_link + ' class="list-group-item list-group-item-action flex-column align-items-start">';
+						var l2 = '<div class="d-flex w-100 justify-content-between">';
+						var l3 = '<h5 class="mb-1">' + res.title + '</h5>';
+						var l4 = '</div>';
+						var l5 = '<p class="mb-1">' + res.description + '</p>';
+						var l6 = '<small class="text-muted"> Subscribers: ' + res.subscribers  + '</small>';
+						var l7 = '</a>';
+						$searchRese.append(l1+l2+l3+l4+l5+l6+l7);
+					}
 				};
-
 			}
 		});
 	;}
-
-
-
-
 });
 
 

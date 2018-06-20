@@ -20,7 +20,7 @@ function addHTML(sub,extension) {
 		logourl = "Images/Podcast-placeholder.jpg";
 	}
 	var l1 = '<div class="subscrip container-fluid center">';
-	var l1p5 = '<a href='+sub.url+'>'
+	var l1p5 = '<a href='+sub.mygpo_link+'>'
     var l2 = '<img src=' + logourl + ' class="thumbies rounded img-fluid center carPic" alt="Responsive image">';
     var l2p5 = '</a>'
     var l3 = '<div class="card content">';
@@ -74,6 +74,7 @@ function changeSlides(data) {
 // changes each unique header
 
 function changeHeaders(data) {
+
 	var head1 = document.getElementById('head1');
 	var head2 = document.getElementById('head2');
 	var head3 = document.getElementById('head3');
@@ -91,6 +92,7 @@ function changeParagraphs(data) {
 	var par1 = document.getElementById('par1');
 	var par2 = document.getElementById('par2');
 	var par3 = document.getElementById('par3');
+
 	var parsedDate1 =  (data["0"].info.episodeRelease).substr(0,10);
 	var parsedDate2 =  (data["1"].info.episodeRelease).substr(0,10);
 	var parsedDate3 =  (data["2"].info.episodeRelease).substr(0,10);
@@ -108,10 +110,17 @@ function changeRefs(data) {
 	var link1 = document.getElementById('firstlink');
 	var link2 = document.getElementById('secondlink');
 	var link3 = document.getElementById('thirdlink');
-
-	link1.href = data["0"].info.url;
-	link2.href = data["1"].info.url;
-	link3.href = data["2"].info.url;
-			
+	var subsGpod = JSON.parse(localStorage.getItem('basicSub'));
+	for (var i = 0; i < subsGpod.length; i++){
+		if (subsGpod[i]["url"] == data["0"].info.url) {
+			link1.href = (subsGpod[i]["mygpo_link"]);
+		}
+		else if (subsGpod[i]["url"] == data["1"].info.url){
+			link2.href = (subsGpod[i]["mygpo_link"]);
+		}
+		else if (subsGpod[i]["url"] == data["2"].info.url){
+			link3.href = (subsGpod[i]["mygpo_link"]);
+		}
+	}
 
 }
