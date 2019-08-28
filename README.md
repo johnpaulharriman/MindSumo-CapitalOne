@@ -1,4 +1,4 @@
-# johnpaulharriman.github.io
+# johnpaulharriman.github.io (Deprecated with personal webiste)
 For Capital One MindSumo Challenge
 
 submission email: johnwpaulharriman@gmail.com
