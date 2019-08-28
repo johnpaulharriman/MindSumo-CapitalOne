@@ -6,7 +6,7 @@ submission email: johnwpaulharriman@gmail.com
 For Capital One MindSumo Challenge
 Website Setup:
 
-Login: The login page takes in two different inputs, username and password., Aa request is made to the api and if it returns successfully, it will change to the Main page.
+Login: The login page takes in two different inputs, username and password. A request is made to the api and if it returns successfully, it will change to the Main page.
 Main page: All subscriptions are loaded immediately and display the most frequent posters based on my algorithm taking into account total frequency,  and frequency within the last month, the subscriptions with the highest gain of subscribers in one week, and other subscriptions that are randomly accessed.
 
 Recommend page: The recommend page is similar to the main page in displaying information, but uses all user information to return recommended tags and podcasts based on the Pearson Correlation Coefficient. It also will display podcasts related to a user's most subscribed- to tags.
